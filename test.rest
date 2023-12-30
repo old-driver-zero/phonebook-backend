@@ -1,4 +1,4 @@
-POST http://localhost:3001/api/persons HTTP/1.1
+POST https://phonebook-backend-k36c.onrender.com/api/persons HTTP/1.1
 Content-Type: application/json
 
 { 
@@ -7,7 +7,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3001/api/persons/
+GET https://phonebook-backend-k36c.onrender.com/api/persons/
 
 ###
-GET http://localhost:3001/info/ HTTP/1.1
+GET https://phonebook-backend-k36c.onrender.com/info/ HTTP/1.1

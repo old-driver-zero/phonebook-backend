@@ -5,6 +5,8 @@ app.use(express.json());
 const cors = require("cors");
 app.use(cors());
 
+app.use(express.static("dist"));
+
 let persons = [
   {
     id: 1,
@@ -28,7 +30,7 @@ let persons = [
   },
 ];
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
@@ -87,6 +89,13 @@ app.post("/api/persons", (request, response) => {
 
   persons = persons.concat(person);
   response.json(person);
+});
+
+app.put("/api/persons/:id", (request, respond) => {
+  const id = Number(request.params.id);
+  const updatePerson = { ...request.body, id: id };
+  persons = persons.filter((person) => person.id !== id).concat(updatePerson);
+  respond.json(updatePerson);
 });
 
 const unknownEndpoint = (request, response) => {
